@@ -73,7 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Refresh product list
             fetchProducts();
-            document.getElementById('createMessage').textContent = 'Product created successfully!';
+            const id = await response.text();
+            document.getElementById('createMessage').textContent = `Product with id ${id} created successfully!`;
         } catch (error) {
             console.error('Error:', error);
             document.getElementById('createMessage').textContent = error.message;
