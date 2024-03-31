@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to fetch and display products
     function fetchProducts() {
-        fetch('https://localhost:7215/api/Product')
+        fetch('https://localhost:7215/api/Products')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch products');
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData(form);
 
         try {
-            const response = await fetch('https://localhost:7215/api/Product', {
+            const response = await fetch('https://localhost:7215/api/Products', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -55,7 +55,17 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             if (!response.ok) {
-                throw new Error('Failed to create product');
+                let errorMessage = 'Failed to create product.';
+
+                // Extract all error messages
+                const responseBody = await response.json();
+                if (responseBody.errors) {
+                    const errors = responseBody.errors;
+                    const errorMessages = Object.values(errors).flatMap(messages => messages);
+                    errorMessage = errorMessages.join('\n');
+                }
+
+                throw new Error(errorMessage);
             }
 
             // Reset form fields
@@ -84,18 +94,20 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData(form);
 
         try {
-            const response = await fetch(`https://localhost:7215/api/Product/${formData.get('getId')}`);
+            const response = await fetch(`https://localhost:7215/api/Products/${formData.get('getId')}`);
 
             if (!response.ok) {
-                let message;
-                const contentType = response.headers.get('content-type');
-                if (contentType && contentType.indexOf('application/json') !== -1) {
-                    const responseBody = await response.json();
-                    message = responseBody.message;
-                } else {
-                    message = await response.text();
+                let errorMessage = 'Failed to get product.';
+
+                // Extract all error messages
+                const responseBody = await response.json();
+                if (responseBody.errors) {
+                    const errors = responseBody.errors;
+                    const errorMessages = Object.values(errors).flatMap(messages => messages);
+                    errorMessage = errorMessages.join('\n');
                 }
-                throw new Error(message);
+
+                throw new Error(errorMessage);
             }
 
             const product = await response.json();
@@ -124,20 +136,22 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData(form);
 
         try {
-            const response = await fetch(`https://localhost:7215/api/Product/${formData.get('productId')}`, {
+            const response = await fetch(`https://localhost:7215/api/Products/${formData.get('productId')}`, {
                 method: 'DELETE'
             });
 
             if (!response.ok) {
-                let message;
-                const contentType = response.headers.get('content-type');
-                if (contentType && contentType.indexOf('application/json') !== -1) {
-                    const responseBody = await response.json();
-                    message = responseBody.message;
-                } else {
-                    message = await response.text();
+                let errorMessage = 'Failed to delete product.';
+
+                // Extract all error messages
+                const responseBody = await response.json();
+                if (responseBody.errors) {
+                    const errors = responseBody.errors;
+                    const errorMessages = Object.values(errors).flatMap(messages => messages);
+                    errorMessage = errorMessages.join('\n');
                 }
-                throw new Error(message);
+
+                throw new Error(errorMessage);
             }
 
             // Refresh product list
@@ -156,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData(form);
 
         try {
-            const response = await fetch(`https://localhost:7215/api/Product/${formData.get('updateId')}`, {
+            const response = await fetch(`https://localhost:7215/api/Products/${formData.get('updateId')}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -170,15 +184,17 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             if (!response.ok) {
-                let message;
-                const contentType = response.headers.get('content-type');
-                if (contentType && contentType.indexOf('application/json') !== -1) {
-                    const responseBody = await response.json();
-                    message = responseBody.message;
-                } else {
-                    message = await response.text();
+                let errorMessage = 'Failed to update product.';
+
+                // Extract all error messages
+                const responseBody = await response.json();
+                if (responseBody.errors) {
+                    const errors = responseBody.errors;
+                    const errorMessages = Object.values(errors).flatMap(messages => messages);
+                    errorMessage = errorMessages.join('\n');
                 }
-                throw new Error(message);
+
+                throw new Error(errorMessage);
             }
 
             // Refresh product list
