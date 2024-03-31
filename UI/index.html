@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="create-product">
+            <h2>Create Product</h2>
+            <form id="productForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" required><br>
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" min="0" required><br>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="0" required><br>
+                <button type="submit">Create</button>
+                <p id="createMessage"></p>
+            </form>
+        </div>
+        <div class="update-product">
+            <h2>Update Product</h2>
+            <form id="updateForm">
+                <label for="updateId">Product ID:</label>
+                <input type="text" id="updateId" name="updateId" required><br>
+                <label for="updateName">Name:</label>
+                <input type="text" id="updateName" name="updateName" required><br>
+                <label for="updateDescription">Description:</label>
+                <input type="text" id="updateDescription" name="updateDescription" required><br>
+                <label for="updatePrice">Price:</label>
+                <input type="number" id="updatePrice" name="updatePrice" min="0" required><br>
+                <label for="updateQuantity">Quantity:</label>
+                <input type="number" id="updateQuantity" name="updateQuantity" min="0" required><br>
+                <button type="submit">Update</button>
+                <p id="updateMessage"></p>
+            </form>
+        </div>
+        <div class="get-product">
+            <h2>Get Product</h2>
+            <form id="getForm">
+                <label for="getId">Product ID:</label>
+                <input type="text" id="getId" name="getId" required><br>
+                <button type="submit">Get</button>
+                <p id="getMessage"></p>
+            </form>
+            <div id="productDetails">
+                <h2 id="productName"></h2>
+                <p id="productDescription"></p>
+                <p id="productPrice"></p>
+                <p id="productQuantity"></p>
+            </div>
+        </div>
+        <div class="delete-product">
+            <h2>Delete Product</h2>
+            <form id="deleteForm">
+                <label for="productId">Product ID:</label>
+                <input type="text" id="productId" name="productId" required><br>
+                <button type="submit">Delete</button>
+                <p id="deleteMessage"></p>
+            </form>
+        </div>
+        <div class="product-list">
+            <h2>Product List</h2>
+            <div id="productList"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

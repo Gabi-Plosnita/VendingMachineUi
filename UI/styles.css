@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.create-product,
+.delete-product,
+.update-product,
+.get-product,
+.product-list {
+    flex: 1;
+    margin: 20px; /* Adjust spacing between sections */
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff; /* White background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.product-list .product {
+    border-top: 1px solid black;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+form {
+    margin-top: 20px;
+    text-align: center; /* Center align form elements */
+}
+
+label {
+    display: block; /* Convert label to block-level element */
+    text-align: left; /* Left align label text */
+    margin-bottom: 10px; /* Increase distance between label and input */
+    margin-left: 10px;
+}
+
+input, button {
+    width: 90%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    display: block; /* Convert input and button to block-level elements */
+    margin: 0 auto; /* Center align the block-level elements */
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
