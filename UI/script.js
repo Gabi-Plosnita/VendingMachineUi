@@ -107,6 +107,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     const errorMessages = Object.values(errors).flatMap(messages => messages);
                     errorMessage = errorMessages.join('\n');
                 }
+                if(responseBody.message)
+                {
+                    errorMessage = responseBody.message;
+                }
 
                 throw new Error(errorMessage);
             }
@@ -151,6 +155,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     const errorMessages = Object.values(errors).flatMap(messages => messages);
                     errorMessage = errorMessages.join('\n');
                 }
+                if(responseBody.message)
+                {
+                    errorMessage = responseBody.message;
+                }
 
                 throw new Error(errorMessage);
             }
@@ -193,6 +201,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     const errors = responseBody.errors;
                     const errorMessages = Object.values(errors).flatMap(messages => messages);
                     errorMessage = errorMessages.join('\n');
+                }
+                if(responseBody.message)
+                {
+                    errorMessage = responseBody.message;
                 }
 
                 throw new Error(errorMessage);
